@@ -56,6 +56,7 @@ def user():
             # ListingLevel List [->HERE<-]
             'listing_level': {'required': True, 'contains': ['item']},
             # TalkingLevel List [->HERE<-]
+            # TalkingLevel List [->HERE<-]
             'talking_level': {'required': True, 'contains': ['item']},
         },
         'skills': {

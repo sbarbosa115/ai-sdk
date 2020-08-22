@@ -1,0 +1,10 @@
+README.md
+main.py
+setup.py
+ai_sdk_sbarbosa115.egg-info/PKG-INFO
+ai_sdk_sbarbosa115.egg-info/SOURCES.txt
+ai_sdk_sbarbosa115.egg-info/dependency_links.txt
+ai_sdk_sbarbosa115.egg-info/top_level.txt
+src/__init__.py
+src/entity/__init__.py
+src/entity/user.py

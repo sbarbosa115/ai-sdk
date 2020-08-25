@@ -8,7 +8,7 @@ class ProfileProcessor:
     def validate(user_schema: dict) -> bool:
         v = Validator()
         v.validate(user_schema, user())
-        return True
+        return v.errors
 
     @staticmethod
     def sanitize() -> bool:

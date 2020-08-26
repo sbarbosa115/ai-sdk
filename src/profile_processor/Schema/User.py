@@ -1,13 +1,17 @@
+from src.profile_processor.Utils import Coerce
+from src.profile_processor.Utils.Coerce import parse_date
+
+
 def user():
     return {
         'name': {'required': True, 'type': 'string', 'minlength': 3, 'maxlength': 255},
-        'identification_number': {'type': 'integer', 'minlength': 0, 'maxlength': 20},
+        'identification_number': {'type': 'string', 'minlength': 0, 'maxlength': 20},
         'email': {'required': True, 'type': 'string', 'regex': '^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'},
         # Pending to add Email Validation
         'phone': {
             'type': 'dict', 'schema': {
                 'area_code': {'required': True, 'type': 'integer', 'min': 1, 'max': 999},
-                'number': {'required': True, 'type': 'integer', 'minlength': 7, 'maxlength': 11},
+                'number': {'required': True, 'type': 'string', 'minlength': 7, 'maxlength': 11},
             }
         },
         'location': {
@@ -33,16 +37,16 @@ def user():
         },
         'age': {
             'type': 'dict', 'required': True, 'schema': {
-                'birth_date': {'type': 'datetime'},
+                'birth_date': {'type': 'date', 'coerce': parse_date},
                 'number': {'type': 'integer', 'min': 18, 'max': 100}
             }
         },
         'work_experience': {
-            'type': 'dict', 'required': True,  'schema': {
+            'type': 'dict', 'required': True, 'schema': {
                 'position': {'required': True, 'type': 'string', 'minlength': 3, 'maxlength': 255},
                 'company': {'required': True, 'type': 'string', 'minlength': 3, 'maxlength': 255},
-                'start_date': {'required': True, 'type': 'datetime'},
-                'end_date': {'type': 'datetime'},
+                'start_date': {'required': True, 'type': 'date', 'coerce': parse_date},
+                'end_date': {'type': 'date', 'coerce': parse_date, 'nullable': True},
                 'description': {'type': 'string'},
                 'sector': {'type': 'string', 'minlength': 3, 'maxlength': 255},
                 'area': {'type': 'string', 'minlength': 3, 'maxlength': 255},
@@ -56,8 +60,8 @@ def user():
                 'level': {'required': True, 'type': 'string', 'minlength': 3, 'maxlength': 255},
                 # Status List [->HERE<-]
                 'status': {'required': True, 'type': 'string', 'minlength': 3, 'maxlength': 255},
-                'start_date': {'required': True, 'type': 'datetime'},
-                'end_date': {'type': 'datetime'},
+                'start_date': {'required': True, 'type': 'date', 'coerce': parse_date},
+                'end_date': {'type': 'date', 'coerce': parse_date, 'nullable': True},
             }
         },
         'languages': {

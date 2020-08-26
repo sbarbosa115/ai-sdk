@@ -5,19 +5,19 @@ from src.profile_processor.Schema.User import user
 class ProfileProcessor:
 
     @staticmethod
-    def validate(user_schema: dict) -> bool:
+    def validate(user_schema: dict) -> dict:
         v = Validator()
         v.validate(user_schema, user())
         return v.errors
 
     @staticmethod
-    def sanitize() -> bool:
+    def sanitize() -> dict:
         return True
 
     @staticmethod
-    def save() -> bool:
+    def save() -> dict:
         return True
 
     @staticmethod
-    def process() -> bool:
+    def process() -> dict:
         return True

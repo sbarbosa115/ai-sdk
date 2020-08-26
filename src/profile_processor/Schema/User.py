@@ -1,3 +1,5 @@
+from src.profile_processor.Model.Study.AcademicLevel import AcademicLevel
+from src.profile_processor.Model.Study.AcademicStatus import AcademicStatus
 from src.profile_processor.Utils import Coerce
 from src.profile_processor.Utils.Coerce import parse_date
 
@@ -56,10 +58,8 @@ def user():
             'type': 'dict', 'required': True, 'schema': {
                 'career': {'required': True, 'type': 'string', 'minlength': 3, 'maxlength': 255},
                 'institution': {'required': True, 'type': 'string', 'minlength': 3, 'maxlength': 255},
-                # Level List [->HERE<-]
-                'level': {'required': True, 'type': 'string', 'minlength': 3, 'maxlength': 255},
-                # Status List [->HERE<-]
-                'status': {'required': True, 'type': 'string', 'minlength': 3, 'maxlength': 255},
+                'level': {'required': True, 'type': 'integer', 'allowed': AcademicLevel.all()},
+                'status': {'required': True, 'type': 'integer', 'allowed': AcademicStatus.all()},
                 'start_date': {'required': True, 'type': 'date', 'coerce': parse_date},
                 'end_date': {'type': 'date', 'coerce': parse_date, 'nullable': True},
             }

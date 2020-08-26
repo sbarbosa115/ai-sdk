@@ -43,8 +43,8 @@ def profile() -> dict:
         'studies': {
             'career': 'Ingeniero Mecanico',
             'institution': 'Universidad de Michigan',
-            'level': AcademicLevel.BACHELOR,
-            'status': AcademicStatus.COMPLETED,
+            'level': AcademicLevel.BACHELOR.value,
+            'status': AcademicStatus.COMPLETED.value,
             'start_date': '2015-01-01',
             'end_date': '2019-01-01',
         },

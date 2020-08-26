@@ -1,3 +1,3 @@
 from datetime import datetime
 
-parse_date = lambda s: datetime.strptime(s, '%Y-%m-%d')
+parse_date = lambda s: datetime.strptime(s, '%Y-%m-%d') if s else None

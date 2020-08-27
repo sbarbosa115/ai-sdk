@@ -1,6 +1,5 @@
 from src.profile_processor.Model.Study.AcademicLevel import AcademicLevel
 from src.profile_processor.Model.Study.AcademicStatus import AcademicStatus
-from src.profile_processor.Utils import Coerce
 from src.profile_processor.Utils.Coerce import parse_date
 
 
@@ -44,47 +43,48 @@ def user():
             }
         },
         'work_experience': {
-            'type': 'dict', 'required': True, 'schema': {
-                'position': {'required': True, 'type': 'string', 'minlength': 3, 'maxlength': 255},
-                'company': {'required': True, 'type': 'string', 'minlength': 3, 'maxlength': 255},
-                'start_date': {'required': True, 'type': 'date', 'coerce': parse_date},
-                'end_date': {'type': 'date', 'coerce': parse_date, 'nullable': True},
-                'description': {'type': 'string'},
-                'sector': {'type': 'string', 'minlength': 3, 'maxlength': 255},
-                'area': {'type': 'string', 'minlength': 3, 'maxlength': 255},
+            'type': 'list', 'required': True, 'schema': {
+                'type': 'dict', 'schema': {
+                    'position': {'required': True, 'type': 'string', 'minlength': 3, 'maxlength': 255},
+                    'company': {'required': True, 'type': 'string', 'minlength': 3, 'maxlength': 255},
+                    'start_date': {'required': True, 'type': 'date', 'coerce': parse_date},
+                    'end_date': {'type': 'date', 'coerce': parse_date, 'nullable': True},
+                    'description': {'type': 'string'},
+                    'sector': {'type': 'string', 'minlength': 3, 'maxlength': 255},
+                    'area': {'type': 'string', 'minlength': 3, 'maxlength': 255},
+                }
             }
         },
         'studies': {
-            'type': 'dict', 'required': True, 'schema': {
-                'career': {'required': True, 'type': 'string', 'minlength': 3, 'maxlength': 255},
-                'institution': {'required': True, 'type': 'string', 'minlength': 3, 'maxlength': 255},
-                'level': {'required': True, 'type': 'integer', 'allowed': AcademicLevel.all()},
-                'status': {'required': True, 'type': 'integer', 'allowed': AcademicStatus.all()},
-                'start_date': {'required': True, 'type': 'date', 'coerce': parse_date},
-                'end_date': {'type': 'date', 'coerce': parse_date, 'nullable': True},
+            'type': 'list', 'required': True, 'schema': {
+                'type': 'dict', 'schema': {
+                    'career': {'required': True, 'type': 'string', 'minlength': 3, 'maxlength': 255},
+                    'institution': {'required': True, 'type': 'string', 'minlength': 3, 'maxlength': 255},
+                    'level': {'required': True, 'type': 'integer', 'allowed': AcademicLevel.all()},
+                    'status': {'required': True, 'type': 'integer', 'allowed': AcademicStatus.all()},
+                    'start_date': {'required': True, 'type': 'date', 'coerce': parse_date},
+                    'end_date': {'type': 'date', 'coerce': parse_date, 'nullable': True},
+                }
             }
         },
         'languages': {
-            'type': 'dict', 'required': True, 'schema': {
-                # Language List [->HERE<-]
-                'language': {'required': True, 'type': 'string', 'minlength': 3, 'maxlength': 255},
-                # ReadingLevel List [->HERE<-]
-                'reading_level': {'required': True, 'contains': ['item']},
-                # ReadingLevel List [->HERE<-]
-                'writing_level': {'required': True, 'contains': ['item']},
-                # ListingLevel List [->HERE<-]
-                'listing_level': {'required': True, 'contains': ['item']},
-                # TalkingLevel List [->HERE<-]
-                # TalkingLevel List [->HERE<-]
-                'talking_level': {'required': True, 'contains': ['item']},
-            }
-        },
-        'skills': {
             'type': 'list', 'required': True, 'schema': {
                 'type': 'dict', 'schema': {
-                    'skill': {'type': 'string'},
-                    'level': {'type': 'integer', 'min': 1, 'max': 10},
+                    'language': {'required': True, 'type': 'string', 'minlength': 3, 'maxlength': 255},
+                    # ReadingLevel List [->HERE<-]
+                    'reading_level': {'required': True, 'contains': ['item']},
+                    # ReadingLevel List [->HERE<-]
+                    'writing_level': {'required': True, 'contains': ['item']},
+                    # ListingLevel List [->HERE<-]
+                    'listing_level': {'required': True, 'contains': ['item']},
+                    # TalkingLevel List [->HERE<-]
+                    'talking_level': {'required': True, 'contains': ['item']},
                 }
+            },
+        },
+        'skills': {
+            'type': 'list', 'schema': {
+                'type': 'string'
             }
         },
     }

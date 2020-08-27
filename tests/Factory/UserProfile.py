@@ -31,34 +31,44 @@ def profile() -> dict:
             'birth_date': '1990-09-20',
             'number': 29
         },
-        'work_experience': {
-            'position': 'Conductor',
-            'company': 'Transmilenio S.A',
-            'start_date': '2019-01-01',
-            'end_date': '',
-            'description': 'Conducir Buses en Diferentes Rutas',
-            'sector': 'Transportes',
-            'area': 'Transportes',
-        },
-        'studies': {
-            'career': 'Ingeniero Mecanico',
-            'institution': 'Universidad de Michigan',
-            'level': AcademicLevel.BACHELOR.value,
-            'status': AcademicStatus.COMPLETED.value,
-            'start_date': '2015-01-01',
-            'end_date': '2019-01-01',
-        },
-        'languages': {
-            'language': pycountry.languages.get(alpha_3='spa').name,
-            'reading_level': 10,
-            'writing_level': 10,
-            'listing_level': 10,
-            'talking_level': 10,
-        },
-        'skills': [
+        'work_experience': [
             {
-                'skill': 'Mecanizado',
-                'level': 10,
+                'position': 'Conductor',
+                'company': 'Transmilenio S.A',
+                'start_date': '2019-01-01',
+                'end_date': '',
+                'description': 'Conducir Buses en Diferentes Rutas',
+                'sector': 'Transportes',
+                'area': 'Transportes',
             }
+        ],
+        'studies': [
+            {
+                'career': 'Ingeniero Mecanico',
+                'institution': 'Universidad de Michigan',
+                'level': AcademicLevel.BACHELOR.value,
+                'status': AcademicStatus.COMPLETED.value,
+                'start_date': '2015-01-01',
+                'end_date': '2019-01-01',
+            }
+        ],
+        'languages': [
+            {
+                'language': pycountry.languages.get(alpha_3='spa').name,
+                'reading_level': 10,
+                'writing_level': 10,
+                'listing_level': 10,
+                'talking_level': 10,
+            },
+            {
+                'language': pycountry.languages.get(alpha_3='eng').name,
+                'reading_level': 10,
+                'writing_level': 10,
+                'listing_level': 10,
+                'talking_level': 10,
+            }
+        ],
+        'skills': [
+            'Mecanizado', 'Tejido'
         ],
     }

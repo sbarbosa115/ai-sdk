@@ -1,5 +1,6 @@
 from src.profile_processor.Model.Study.AcademicLevel import AcademicLevel
 from src.profile_processor.Model.Study.AcademicStatus import AcademicStatus
+from src.profile_processor.Model.Languages.LanguagesLevel import  LanguageLevel
 from src.profile_processor.Utils.Coerce import parse_date
 
 
@@ -72,13 +73,13 @@ def user():
                 'type': 'dict', 'schema': {
                     'language': {'required': True, 'type': 'string', 'minlength': 3, 'maxlength': 255},
                     # ReadingLevel List [->HERE<-]
-                    'reading_level': {'required': True, 'contains': ['item']},
+                    'reading_level': {'required': True, 'type':'integer', 'allowed': LanguageLevel.all()},
                     # ReadingLevel List [->HERE<-]
-                    'writing_level': {'required': True, 'contains': ['item']},
+                    'writing_level': {'required': True,'type':'integer', 'allowed': LanguageLevel.all()},
                     # ListingLevel List [->HERE<-]
-                    'listing_level': {'required': True, 'contains': ['item']},
+                    'listing_level': {'required': True,'type':'integer', 'allowed': LanguageLevel.all()},
                     # TalkingLevel List [->HERE<-]
-                    'talking_level': {'required': True, 'contains': ['item']},
+                    'talking_level': {'required': True, 'type':'integer', 'allowed': LanguageLevel.all()},
                 }
             },
         },

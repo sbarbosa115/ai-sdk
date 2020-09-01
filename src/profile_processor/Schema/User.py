@@ -1,6 +1,6 @@
 from src.profile_processor.Model.Study.AcademicLevel import AcademicLevel
 from src.profile_processor.Model.Study.AcademicStatus import AcademicStatus
-from src.profile_processor.Utils.Coerce import parse_date
+from src.profile_processor.Utils.Coerce import parse_date, sanitize_numeric, sanitize_names
 
 
 def user():
@@ -8,40 +8,21 @@ def user():
         'name': {'required': True, 'type': 'string', 'minlength': 3, 'maxlength': 255},
         'identification_number': {'type': 'string', 'minlength': 0, 'maxlength': 20},
         'email': {'required': True, 'type': 'string', 'regex': '^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'},
-        # Pending to add Email Validation
         'phone': {
             'type': 'dict', 'schema': {
                 'area_code': {'required': True, 'type': 'integer', 'min': 1, 'max': 999},
-                'number': {'required': True, 'type': 'string', 'minlength': 7, 'maxlength': 11},
+                'number': {'required': True, 'type': 'string', 'minlength': 7, 'maxlength': 11, 'coerce': sanitize_numeric},
             }
         },
         'location': {
-            # same that current if not present.
             'type': 'dict', 'required': True, 'schema': {
-                'birth': {
-                    'type': 'dict', 'schema': {
-                        'country_name': {'required': True, 'type': 'string', 'minlength': 3, 'maxlength': 255},
-                        'country_iso_code': {'required': True, 'type': 'string', 'minlength': 3, 'maxlength': 3},
-                        'city': {'required': True, 'type': 'string', 'minlength': 3, 'maxlength': 255},
-                        'state': {'required': True, 'type': 'string', 'minlength': 3, 'maxlength': 255},
-                    }
-                },
-                'current': {
-                    'type': 'dict', 'schema': {
-                        'country_name': {'required': True, 'type': 'string', 'minlength': 3, 'maxlength': 255},
-                        'country_iso_code': {'required': True, 'type': 'string', 'minlength': 3, 'maxlength': 3},
-                        'city': {'required': True, 'type': 'string', 'minlength': 3, 'maxlength': 255},
-                        'state': {'required': True, 'type': 'string', 'minlength': 3, 'maxlength': 255},
-                    }
-                },
+                'country_name': {'required': True, 'type': 'string', 'minlength': 3, 'maxlength': 255},
+                'country_iso_code': {'required': True, 'type': 'string', 'minlength': 3, 'maxlength': 3},
+                'city': {'required': True, 'type': 'string', 'minlength': 3, 'maxlength': 255, 'coerce': sanitize_names},
+                'state': {'required': True, 'type': 'string', 'minlength': 3, 'maxlength': 255, 'coerce': sanitize_names},
             }
         },
-        'age': {
-            'type': 'dict', 'required': True, 'schema': {
-                'birth_date': {'type': 'date', 'coerce': parse_date},
-                'number': {'type': 'integer', 'min': 18, 'max': 100}
-            }
-        },
+        'birth_date': {'type': 'date', 'coerce': parse_date},
         'work_experience': {
             'type': 'list', 'required': True, 'schema': {
                 'type': 'dict', 'schema': {
@@ -71,14 +52,10 @@ def user():
             'type': 'list', 'required': True, 'schema': {
                 'type': 'dict', 'schema': {
                     'language': {'required': True, 'type': 'string', 'minlength': 3, 'maxlength': 255},
-                    # ReadingLevel List [->HERE<-]
                     'reading_level': {'required': True, 'contains': ['item']},
-                    # ReadingLevel List [->HERE<-]
                     'writing_level': {'required': True, 'contains': ['item']},
-                    # ListingLevel List [->HERE<-]
-                    'listing_level': {'required': True, 'contains': ['item']},
-                    # TalkingLevel List [->HERE<-]
-                    'talking_level': {'required': True, 'contains': ['item']},
+                    'listening_level': {'required': True, 'contains': ['item']},
+                    'speaking_level': {'required': True, 'contains': ['item']},
                 }
             },
         },

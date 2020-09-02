@@ -14,23 +14,12 @@ def profile() -> dict:
             'number': '300 2823178',
         },
         'location': {
-            'birth': {
-                'country_name': pycountry.countries.get(alpha_2='CO').name,
-                'country_iso_code': pycountry.countries.get(alpha_2='CO').alpha_3,
-                'city': 'Bogota',
-                'state': 'Bogota D.C',
-            },
-            'current': {
-                'country_name': pycountry.countries.get(alpha_2='CO').name,
-                'country_iso_code': pycountry.countries.get(alpha_2='CO').alpha_3,
-                'city': 'Medellin',
-                'state': 'Antioquia',
-            },
+            'country_name': pycountry.countries.get(alpha_2='CO').name,
+            'country_iso_code': pycountry.countries.get(alpha_2='CO').alpha_3,
+            'city': 'Medellin',
+            'state': 'Antioquia',
         },
-        'age': {
-            'birth_date': '1990-09-20',
-            'number': 29
-        },
+        'birth_date': '1990-09-20',
         'work_experience': [
             {
                 'position': 'Conductor',
@@ -57,15 +46,15 @@ def profile() -> dict:
                 'language': pycountry.languages.get(alpha_3='spa').name,
                 'reading_level': 10,
                 'writing_level': 10,
-                'listing_level': 10,
-                'talking_level': 10,
+                'listening_level': 10,
+                'speaking_level': 10,
             },
             {
                 'language': pycountry.languages.get(alpha_3='eng').name,
                 'reading_level': 10,
                 'writing_level': 10,
-                'listing_level': 10,
-                'talking_level': 10,
+                'listening_level': 10,
+                'speaking_level': 10,
             }
         ],
         'skills': [

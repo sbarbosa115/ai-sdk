@@ -11,6 +11,6 @@ setuptools.setup(
     author_email='sbarbosa115@gmail.com',
     description='IA package.',
     install_requires=[
-        'cerberus', 'pycountry'
+        'cerberus', 'pycountry', 'boto3', 'python-dotenv'
     ]
 )

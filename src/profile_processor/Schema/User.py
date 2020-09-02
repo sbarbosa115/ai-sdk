@@ -44,7 +44,9 @@ def user():
                     'level': {'required': True, 'type': 'integer', 'allowed': AcademicLevel.all()},
                     'status': {'required': True, 'type': 'integer', 'allowed': AcademicStatus.all()},
                     'start_date': {'required': True, 'type': 'date', 'coerce': parse_date},
-                    'end_date': {'type': 'date', 'coerce': parse_date, 'nullable': True},
+                    'end_date': {
+                        'type': 'date', 'coerce': parse_date, 'nullable': True, 'dependencies': 'start_date'
+                    },
                 }
             }
         },

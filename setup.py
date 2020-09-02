@@ -3,7 +3,7 @@ import setuptools
 
 setuptools.setup(
     name='ai-sdk-sbarbosa115',
-    version='1.0.0',
+    version='1.0.3',
     packages=setuptools.find_packages(),
     url='https://github.com/sbarbosa115/ai-sdk.git',
     license='',
@@ -12,5 +12,6 @@ setuptools.setup(
     description='IA package.',
     install_requires=[
         'cerberus', 'pycountry', 'boto3', 'python-dotenv'
-    ]
+    ],
+    python_requires='>=3.8',
 )

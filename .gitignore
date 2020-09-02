@@ -1,7 +1,7 @@
-./.idea
+.idea
 ./src/__pycache__/
 ./ai_sdk_sbarbosa115.egg-info
 ./build
 ./dist
 ./var
-./.env
+.env
